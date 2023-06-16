@@ -40,8 +40,8 @@ def relationship_status(from_member, to_member, social_graph):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    from_follow_to = toMember in social_graph[fromMember][“following”]
-    to_follow_from = fromMember in social_graph[to_Member]["following"]
+    from_follow_to = to_member in social_graph[from_member]["following"]
+    to_follow_from = from_member in social_graph[to_member]["following"]
     if from_follow_to == True:
         if to_follow_from == True:
             return "friends"
@@ -90,15 +90,15 @@ def tic_tac_toe(board):
         if len(set(column)) == 1 and column[0] != " ":
             return column[0]
 
-    negative = []
-    positive = []
+    negative_diagonal = []
+    positive_diagonal = []
     for i in range(len(board)):
-        negative.append(board[i][i])
-        positive.append(board[i][len(board) - 1 - i])
-    if len(set(negative)) == 1 and negative[0] != " ":
-        return negative[0]
-    if len(set(positive)) == 1 and positive[0] != " ":
-        return positive[0]
+        negative_diagonal.append(board[i][i])
+        positive_diagonal.append(board[i][len(board) - 1 - i])
+    if len(set(negative_diagonal)) == 1 and negative_diagonal[0] != " ":
+        return negative_diagonal[0]
+    if len(set(positive_diagonal)) == 1 and positive_diagonal[0] != " ":
+        return positive_diagonal[0]
 
     return "NO WINNER"
 
