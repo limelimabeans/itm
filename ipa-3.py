@@ -150,11 +150,9 @@ def eta(first_stop, second_stop, route_map):
     total_travel_time = 0
     start_stop = first_stop
     while start_stop != second_stop:
-        if keys[start_index][0] != start_stop:
-            start_index = (start_index + 1) % len(keys)
-            continue
-        total_travel_time += route_map[keys[start_index]]["travel_time_mins"]
-        start_stop = keys[start_index][1]
+        if keys[start_index][0] == start_stop:
+            total_travel_time += route_map[keys[start_index]]["travel_time_mins"]
+            start_stop = keys[start_index][1]
         start_index = (start_index + 1) % len(keys)
 
     return total_travel_time
