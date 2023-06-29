@@ -45,7 +45,7 @@ def relationship_status(from_member, to_member, social_graph):
     if following:
         if followed_by:
             return "friends"
-        return "following"
+        return "follower"
     if not following:
         if followed_by:
             return "followed by"
