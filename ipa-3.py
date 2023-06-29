@@ -40,14 +40,14 @@ def relationship_status(from_member, to_member, social_graph):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    from_follow_to = to_member in social_graph[from_member]["following"]
-    to_follow_from = from_member in social_graph[to_member]["following"]
-    if from_follow_to == True:
-        if to_follow_from == True:
+    following = to_member in social_graph[from_member]["following"]
+    followed_by = from_member in social_graph[to_member]["following"]
+    if following:
+        if followed_by:
             return "friends"
         return "following"
-    if from_follow_to == False:
-        if to_follow_from == True:
+    if not following:
+        if followed_by:
             return "followed by"
         return "no relationship"
 
@@ -82,12 +82,12 @@ def tic_tac_toe(board):
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     for row in board:
-        if len(set(row)) == 1 and row[0] != " ":
+        if len(set(row)) == 1 and row[0] != "":
             return row[0]
 
     for col in range(len(board)):
         column = [board[row][col] for row in range(len(board))]
-        if len(set(column)) == 1 and column[0] != " ":
+        if len(set(column)) == 1 and column[0] != "":
             return column[0]
 
     negative_diagonal = []
@@ -95,9 +95,9 @@ def tic_tac_toe(board):
     for i in range(len(board)):
         negative_diagonal.append(board[i][i])
         positive_diagonal.append(board[i][len(board) - 1 - i])
-    if len(set(negative_diagonal)) == 1 and negative_diagonal[0] != " ":
+    if len(set(negative_diagonal)) == 1 and negative_diagonal[0] != "":
         return negative_diagonal[0]
-    if len(set(positive_diagonal)) == 1 and positive_diagonal[0] != " ":
+    if len(set(positive_diagonal)) == 1 and positive_diagonal[0] != "":
         return positive_diagonal[0]
 
     return "NO WINNER"
