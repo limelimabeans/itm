@@ -149,10 +149,10 @@ def vigenere_cipher(message, key):
     key_letters = list(key)
     key_length = len(key)
     for i in range(len(message)):
-        if message[i] == " ":
+        if message_letters[i] == " ":
             continue
         order_of_letter = ((ord(message[i]) - 65 + ord(key[i % key_length]) - 65) % 26) + 65
-        message[i] = chr(order_of_letter)
+        message_letters[i] = chr(order_of_letter)
     return "".join(message_letters)
 
 
@@ -218,7 +218,7 @@ def scytale_cipher(message, shift):
         message_letters.append("_")
         message_length += 1
     for i in range(message_length):
-        encoded_message_letters.append(message[(i // shift) + (message_length // shift) * (i % shift)])
+        encoded_message_letters.append(message_letters[(i // shift) + (message_length // shift) * (i % shift)])
     return "".join(encoded_message_letters)
 
 
@@ -259,6 +259,6 @@ def scytale_decipher(message, shift):
         message_letters.append("_")
         message_length += 1
     for i in range(message_length):
-        decoded_message_letters.append(message[(i % (message_length // shift)) * shift + (i // (message_length // shift))])
+        decoded_message_letters.append(message_letters[(i % (message_length // shift)) * shift + (i // (message_length // shift))])
     return "".join(decoded_message_letters)
 
